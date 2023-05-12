@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quai Antique | Mon Compte{% endblock %}
+
+{% block body %}
+<div class="container">
+<div class="col">
+<div class="row">
+<h1>Mon Compte</h1>
+<div class="col">
+<h2>Informations personnelles</h2>
+<p>Nom : {{ user.lastname }}</p>
+<p>Prénom : {{ user.firstname }}</p>
+<p>Email : {{ user.email }}</p>
+
+<h3>Informations complémentaire</h3>
+<p>Nombres de personne : {% if user.nbOfPersons == null %}
+Information non renseignée
+{% else %}
+{{user.nbOfPersons}}
+{% endif %}</p>
+<p>Allergies : {% if user.nbOfPersons == null %}
+Information non renseignée
+{% else %}
+{{user.allergies}}
+{% endif %}</p>
+    
+<h3>Modifier mes informations</h3>
+<a href="{{ path('app_account_edit', {'id': user.id}) }}" class="btn btn-primary">Modifier</a>
+
+
+
+</div>
+
+</div>
+</div>
+
+</div>
+{% endblock %}
