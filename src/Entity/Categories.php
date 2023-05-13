@@ -18,8 +18,15 @@ class Categories
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
+    #[ORM\ManyToOne(inversedBy: 'categories')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?BigCategories $bigCategory = null;
+
     #[ORM\ManyToMany(targetEntity: Dishes::class, mappedBy: 'category')]
     private Collection $dishes;
+
+    #[ORM\Column]
+    private ?int $categoryOrder = null;
 
     public function __construct()
     {
@@ -39,6 +46,18 @@ class Categories
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getBigCategory(): ?BigCategories
+    {
+        return $this->bigCategory;
+    }
+
+    public function setBigCategory(?BigCategories $bigCategory): self
+    {
+        $this->bigCategory = $bigCategory;
 
         return $this;
     }
@@ -66,6 +85,18 @@ class Categories
         if ($this->dishes->removeElement($dish)) {
             $dish->removeCategory($this);
         }
+
+        return $this;
+    }
+
+    public function getCategoryOrder(): ?int
+    {
+        return $this->categoryOrder;
+    }
+
+    public function setCategoryOrder(int $categoryOrder): self
+    {
+        $this->categoryOrder = $categoryOrder;
 
         return $this;
     }

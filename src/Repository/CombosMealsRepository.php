@@ -2,7 +2,8 @@
 
 namespace App\Repository;
 
-use App\Entity\CombosMeal;
+
+use App\Entity\CombosMeals;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -14,14 +15,14 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method CombosMeal[]    findAll()
  * @method CombosMeal[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CombosMealRepository extends ServiceEntityRepository
+class CombosMealsRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, CombosMeal::class);
+        parent::__construct($registry, CombosMeals::class);
     }
 
-    public function save(CombosMeal $entity, bool $flush = false): void
+    public function save(CombosMeals $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +31,7 @@ class CombosMealRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(CombosMeal $entity, bool $flush = false): void
+    public function remove(CombosMeals $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 

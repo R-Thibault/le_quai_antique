@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230512125749 extends AbstractMigration
+final class Version20230513102022 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,12 @@ final class Version20230512125749 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE users ADD lastname VARCHAR(255) DEFAULT NULL, ADD firstname VARCHAR(255) DEFAULT NULL, ADD nb_of_persons INT DEFAULT NULL, ADD allergies VARCHAR(255) DEFAULT NULL');
+        $this->addSql('ALTER TABLE meals ADD CONSTRAINT FK_E229E6EA2DFF666E FOREIGN KEY (combos_meal_id) REFERENCES combos_meals (id)');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE users DROP lastname, DROP firstname, DROP nb_of_persons, DROP allergies');
+        $this->addSql('ALTER TABLE meals DROP FOREIGN KEY FK_E229E6EA2DFF666E');
     }
 }

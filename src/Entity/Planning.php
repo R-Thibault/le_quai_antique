@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\PlanningRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PlanningRepository::class)]
@@ -17,17 +16,17 @@ class Planning
     #[ORM\Column(length: 255)]
     private ?string $day = null;
 
-    #[ORM\Column]
-    private ?string $open_am = null;
+    #[ORM\Column(nullable: true)]
+    private ?float $open_am = null;
 
-    #[ORM\Column]
-    private ?string $close_am = null;
+    #[ORM\Column(nullable: true)]
+    private ?float $close_am = null;
 
-    #[ORM\Column]
-    private ?string $open_pm = null;
+    #[ORM\Column(nullable: true)]
+    private ?float $open_pm = null;
 
-    #[ORM\Column]
-    private ?string $close_pm = null;
+    #[ORM\Column(nullable: true)]
+    private ?float $close_pm = null;
 
     public function getId(): ?int
     {
@@ -46,48 +45,48 @@ class Planning
         return $this;
     }
 
-    public function getOpenAm(): string
+    public function getOpenAm(): ?float
     {
         return $this->open_am;
     }
 
-    public function setOpenAm(string $open_am): self
+    public function setOpenAm(?float $open_am): self
     {
         $this->open_am = $open_am;
 
         return $this;
     }
 
-    public function getCloseAm(): string
+    public function getCloseAm(): ?float
     {
         return $this->close_am;
     }
 
-    public function setCloseAm(string $close_am): self
+    public function setCloseAm(?float $close_am): self
     {
         $this->close_am = $close_am;
 
         return $this;
     }
 
-    public function getOpenPm(): string
+    public function getOpenPm(): ?float
     {
         return $this->open_pm;
     }
 
-    public function setOpenPm(string $open_pm): self
+    public function setOpenPm(?float $open_pm): self
     {
         $this->open_pm = $open_pm;
 
         return $this;
     }
 
-    public function getClosePm(): string
+    public function getClosePm(): ?float
     {
         return $this->close_pm;
     }
 
-    public function setClosePm(string $close_pm): self
+    public function setClosePm(?float $close_pm): self
     {
         $this->close_pm = $close_pm;
 

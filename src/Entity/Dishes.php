@@ -23,7 +23,7 @@ class Dishes
     private ?string $description = null;
 
     #[ORM\Column]
-    private ?int $price = null;
+    private ?float $price = null;
 
     #[ORM\OneToMany(mappedBy: 'dishes', targetEntity: Images::class)]
     private Collection $image;
@@ -66,12 +66,12 @@ class Dishes
         return $this;
     }
 
-    public function getPrice(): ?int
+    public function getPrice(): ?float
     {
         return $this->price;
     }
 
-    public function setPrice(int $price): self
+    public function setPrice(float $price): self
     {
         $this->price = $price;
 

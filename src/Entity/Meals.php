@@ -21,10 +21,10 @@ class Meals
     private ?string $description = null;
 
     #[ORM\Column]
-    private ?int $price = null;
+    private ?float $price = null;
 
     #[ORM\ManyToOne(inversedBy: 'meals')]
-    private ?CombosMeal $combosMeal = null;
+    private ?CombosMeals $combosMeal = null;
 
     public function getId(): ?int
     {
@@ -55,24 +55,24 @@ class Meals
         return $this;
     }
 
-    public function getPrice(): ?int
+    public function getPrice(): ?float
     {
         return $this->price;
     }
 
-    public function setPrice(int $price): self
+    public function setPrice(float $price): self
     {
         $this->price = $price;
 
         return $this;
     }
 
-    public function getCombosMeal(): ?CombosMeal
+    public function getCombosMeal(): ?CombosMeals
     {
         return $this->combosMeal;
     }
 
-    public function setCombosMeal(?CombosMeal $combosMeal): self
+    public function setCombosMeal(?CombosMeals $combosMeal): self
     {
         $this->combosMeal = $combosMeal;
 

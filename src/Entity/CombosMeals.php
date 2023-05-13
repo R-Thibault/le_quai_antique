@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\CombosMealRepository;
+use App\Repository\CombosMealsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: CombosMealRepository::class)]
-class CombosMeal
+#[ORM\Entity(repositoryClass: CombosMealsRepository::class)]
+class CombosMeals
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
