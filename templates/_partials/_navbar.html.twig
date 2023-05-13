@@ -21,6 +21,11 @@
     <button class="btn btn-primary " type="submit">Reservez</button>
   <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
   {% if app.user %}
+  {% if is_granted('ROLE_ADMIN') %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('admin') }}">Gestions</a>
+                            </li>
+                        {% endif %}
     <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{path('app_account_index')}}">Mon Compte</a>
         </li>

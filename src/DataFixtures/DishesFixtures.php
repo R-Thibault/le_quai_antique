@@ -23,7 +23,7 @@ class DishesFixtures extends Fixture implements DependentFixtureInterface
         for($dish = 1; $dish <= 20; $dish++){
             $dishes = new Dishes();
             $dishes->setTitle($faker->text(rand(5, 12)));
-            $dishes->setPrice($faker->numberBetween(800,1600));
+            $dishes->setPrice($faker->randomFloat(2, 5, 20));
             
             $counter = rand(1,3);
             for($i = 0; $i < $counter; $i++){

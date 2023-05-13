@@ -18,7 +18,7 @@ class MealsFixture extends Fixture implements DependentFixtureInterface
         for($meal = 1; $meal <= 20; $meal++){
             $meals = new Meals();
             $meals->setTitle($faker->text(rand(5, 12)));
-            $meals->setPrice($faker->numberBetween(1200,3000));
+            $meals->setPrice($faker->randomFloat(2, 12, 30));
             $meals->setCombosMeal($faker->randomElement($combosMeals));
             $meals->setDescription($faker->paragraph(2));
             $manager->persist($meals);

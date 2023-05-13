@@ -131,4 +131,12 @@ class Dishes
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->image->get(0)->getFilename();
+
+            
+           
+    }
 }
