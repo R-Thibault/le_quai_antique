@@ -1,0 +1,13 @@
+<div class="card">
+  {# <img src="{{dish.image}}" alt="" class="card-img-top">#}
+  <div class="card-body">
+    <h5 class="card-title">{{dish.title}}</h5>
+    <p class="card-text text-muted">{{dish.description}}</p>
+    <p class="card-text fw-semibold">{{dish.price}} €</p>
+  </div>
+  <div class="m-1">
+  {% for cat in dish.category %}
+    <em class="text-muted text-italic m-1">#{{cat.title}}</em>
+  {% endfor %}
+  </div>
+</div>

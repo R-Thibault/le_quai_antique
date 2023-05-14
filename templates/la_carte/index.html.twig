@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La carte du Quai Antique{% endblock %}
+ {% block stylesheets %} 
+         <style>
+            .grid {
+            display:grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;   
+         }
+         .searchForm {
+            display: block;
+            position : sticky;
+            top: 2rem;
+         }
+         </style>
+        {% endblock %}
+{% block body %}
+<div class="container ">
+    <div class="row">
+        <div class="col-md-3">
+            {% include 'la_carte/_filter.html.twig' with {form : form, min: min, max: max} only %}
+
+        </div>
+        <div class="col-md-9">
+        <div class="d-flex justify-content-end mb-2">
+        {{ knp_pagination_sortable(dishes, 'Prix', 'dishes.price') }}
+        {{ knp_pagination_sortable(dishes, 'Nom', 'dishes.title') }}
+        </div>
+            <div class="container">
+                <div class="grid">
+                    {% for dish in dishes %}
+                    {% include 'la_carte/_card.html.twig' with {dish: dish} only  %}
+                    {% endfor %}
+                </div>
+                <div class="mt-4">
+                
+                    {{ knp_pagination_render(dishes) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+{% endblock %}

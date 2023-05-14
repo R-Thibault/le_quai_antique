@@ -18,9 +18,7 @@ class Categories
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[ORM\ManyToOne(inversedBy: 'categories')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?BigCategories $bigCategory = null;
+    
 
     #[ORM\ManyToMany(targetEntity: Dishes::class, mappedBy: 'category')]
     private Collection $dishes;
@@ -50,17 +48,7 @@ class Categories
         return $this;
     }
 
-    public function getBigCategory(): ?BigCategories
-    {
-        return $this->bigCategory;
-    }
-
-    public function setBigCategory(?BigCategories $bigCategory): self
-    {
-        $this->bigCategory = $bigCategory;
-
-        return $this;
-    }
+   
 
     /**
      * @return Collection<int, Dishes>
