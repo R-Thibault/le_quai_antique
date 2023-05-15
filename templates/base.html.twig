@@ -21,7 +21,7 @@
         {% block javascripts %}            
         {% endblock %}
     </head>
-    <body class="d-flex flex-column ">
+    <body class="d-flex flex-column vh-100">
         {% include "_partials/_navbar.html.twig" %}
         
         {% if app.user and app.user.isVerified == false %}

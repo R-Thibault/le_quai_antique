@@ -6,9 +6,11 @@ use App\Repository\DishesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
+
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: DishesRepository::class)]
+
 class Dishes
 {
     #[ORM\Id]
@@ -25,11 +27,12 @@ class Dishes
     #[ORM\Column]
     private ?float $price = null;
 
-    #[ORM\OneToMany(mappedBy: 'dishes', targetEntity: Images::class)]
+    #[ORM\OneToMany(mappedBy: 'dishes', targetEntity: Images::class, cascade: ['persist'])]
     private Collection $image;
 
     #[ORM\ManyToMany(targetEntity: Categories::class, inversedBy: 'dishes')]
     private Collection $category;
+
 
     public function __construct()
     {
@@ -134,10 +137,12 @@ class Dishes
 
     public function __toString(): string
     {
-        return $this->image->get(0)->getFilename();
+        return $this->title;
 
             
            
     }
+
+
     
 }

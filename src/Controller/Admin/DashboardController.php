@@ -6,7 +6,7 @@ use App\Entity\Planning;
 use App\Entity\Users;
 use App\Entity\CombosMeals;
 use App\Entity\Meals;
-use App\Entity\BigCategories;
+
 use App\Entity\Categories;
 use App\Entity\Images;
 use App\Entity\Dishes;
@@ -77,10 +77,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Planning', 'fas fa-list', Planning::class);
         yield MenuItem::linkToCrud('Menues', 'fas fa-list', CombosMeals::class);
         yield MenuItem::linkToCrud('Formules', 'fas fa-list', Meals::class);
-        
         yield MenuItem::linkToCrud('Sous-catégories', 'fas fa-list', Categories::class);
-        yield MenuItem::linkToCrud('Images', 'fas fa-list', Images::class);
         yield MenuItem::linkToCrud('Plats', 'fas fa-list', Dishes::class);
+        yield MenuItem::linkToCrud('Images', 'fas fa-image', Images::class);
 
     }
 }
