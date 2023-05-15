@@ -15,12 +15,13 @@ class MealsFixture extends Fixture implements DependentFixtureInterface
     {
         $faker = Faker\Factory::create('fr_FR');
         $combosMeals = $manager->getRepository(CombosMeals::class)->findBy([], ['id' => 'ASC']);
-        for($meal = 1; $meal <= 20; $meal++){
+        for($meal = 1; $meal <= 7; $meal++){
             $meals = new Meals();
             $meals->setTitle($faker->text(rand(5, 12)));
             $meals->setPrice($faker->randomFloat(2, 12, 30));
             $meals->setCombosMeal($faker->randomElement($combosMeals));
             $meals->setDescription($faker->paragraph(2));
+            $meals->setNote($faker->sentence(1));
             $manager->persist($meals);
         }
 

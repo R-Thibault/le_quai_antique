@@ -90,7 +90,7 @@ public function __construct(ManagerRegistry $registry, PaginatorInterface $pagin
         return $this->paginator->paginate(
             $query,
             $search->page,
-            8
+            14
         );
      }
 

@@ -3,6 +3,9 @@
 {% block title %}Nos plats {% endblock %}
  {% block stylesheets %} 
          <style>
+         html, body{
+            min-height: 100%;
+         }
             .grid {
             display:grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -11,18 +14,22 @@
          .searchForm {
             display: block;
             position : sticky;
-            top: 2rem;
+            top: 3rem;
          }
          </style>
         {% endblock %}
 {% block body %}
-<div class="container js-filter">
-    <div class="row">
-        <div class="col-md-3">
+<div class="container-fluid js-filter px-4 h-100">
+<div class="border-bottom pb-1 mb-4 text-center">
+<h1>Nos plats</h1>
+</div>
+    <div class="row ">
+    
+        <div class="col-md-2">
             {% include 'la_carte/_filter.html.twig' with {form : form, min: min, max: max} only %}
 
         </div>
-        <div class="col-md-9">
+        <div class="col-md-10">
         <div class="d-flex justify-content-end m-2 js-filter-sorting">
         {% include 'la_carte/_sorting.html.twig' %}
         </div>

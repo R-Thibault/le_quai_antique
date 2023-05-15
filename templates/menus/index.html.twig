@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MenusController!{% endblock %}
+ {% block stylesheets %} 
+         <style>
+            .grid {
+            display:grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            
+            }   
+         }
+         
+         </style>
+        {% endblock %}
+{% block body %}
+
+    <div class="container-fluid text-center">
+    <div class="border-bottom pb-2 mb-5">
+    <h1 class="text-decoration-underline">Nos menus</h1>
+    </div>
+    <div class="grid">
+    
+    
+    
+    {% for combo in combos %}
+    <div class="text-center">
+        <h3>{{combo.title}}</h3>
+        {% for meal in combo.meals %}
+        {% include 'menus/_card.html.twig'%}
+        {% endfor %}
+        </div>
+    {% endfor %}
+    
+    </div>
+    </div>
+
+{% endblock %}

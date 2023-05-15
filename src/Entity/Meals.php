@@ -26,6 +26,9 @@ class Meals
     #[ORM\ManyToOne(inversedBy: 'meals')]
     private ?CombosMeals $combosMeal = null;
 
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $note = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -82,5 +85,17 @@ class Meals
     public function __toString(): string
     {
         return $this->combosMeal;
+    }
+
+    public function getNote(): ?string
+    {
+        return $this->note;
+    }
+
+    public function setNote(string $note): self
+    {
+        $this->note = $note;
+
+        return $this;
     }
 }

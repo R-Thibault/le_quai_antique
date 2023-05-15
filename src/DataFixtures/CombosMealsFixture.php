@@ -12,7 +12,7 @@ class CombosMealsFixture extends Fixture
     public function load(ObjectManager $manager): void
     {
         $faker = Faker\Factory::create('fr_FR');
-        for($combo = 1; $combo <= 7; $combo++){
+        for($combo = 1; $combo <= 3; $combo++){
             $this->createCombosMeals($faker->text(rand(5, 12)), $manager);
         }
 
