@@ -4,12 +4,12 @@ namespace App\DataFixtures;
 
 use App\Entity\Categories;
 
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
 use Doctrine\Persistence\ObjectManager;
 
-class CategoriesFixtures extends Fixture implements DependentFixtureInterface
+class CategoriesFixtures extends Fixture 
 {
     public function load(ObjectManager $manager): void
     {
@@ -44,12 +44,7 @@ class CategoriesFixtures extends Fixture implements DependentFixtureInterface
         return $categories;
     }
 
-    public function getDependencies()
-    {
-        return [
-            BigCategoriesFixture::class,
-        ];
-    }
+   
 
 
 

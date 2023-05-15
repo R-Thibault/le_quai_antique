@@ -8,6 +8,7 @@ use App\Repository\DishesRepository;
 use Knp\Component\Pager\Paginator;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,7 +26,13 @@ class DishesController extends AbstractController
        [$min, $max] = $dishesRepository->findMinMax($data);
 
         $dishes = $dishesRepository->findSearch($data);
-
+        if ($request->get('ajax')){
+            return new JsonResponse([
+                'content' => $this->renderView('la_carte/_dishes.html.twig', ['dishes' => $dishes]),
+                'pagination' => $this->renderView('la_carte/_pagination.html.twig', ['dishes' => $dishes]),
+                'sorting' => $this->renderView('la_carte/_sorting.html.twig', ['dishes' => $dishes]),
+            ]);
+        }
         return $this->render('la_carte/index.html.twig', [
             'dishes' => $dishes,
             'form' => $form->createView(),

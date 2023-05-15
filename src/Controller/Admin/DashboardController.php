@@ -26,11 +26,11 @@ class DashboardController extends AbstractDashboardController
     public function index(): Response
     {
         
-        return parent::index();
+        
 
 
         $routeBuilder = $this->container->get(AdminUrlGenerator::class);
-        $url = $routeBuilder->setController(PlanningCrudController::class)->generateUrl();
+        $url = $routeBuilder->setController(UsersCrudController::class)->generateUrl();
 
         return $this->redirect($url);
         // Option 1. You can make your dashboard redirect to some common page of your backend
@@ -70,14 +70,14 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        // yield MenuItem::linkToDashboard('Panneau d\'administration', 'fa fa-home');
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
+         //yield MenuItem::linkToDashboard('Panneau d\'administration', 'fa fa-home', );
+         //yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
         yield MenuItem::linktoRoute('Retour au site', 'fas fa-home', 'app_home');
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-list', Users::class);
         yield MenuItem::linkToCrud('Planning', 'fas fa-list', Planning::class);
         yield MenuItem::linkToCrud('Menues', 'fas fa-list', CombosMeals::class);
         yield MenuItem::linkToCrud('Formules', 'fas fa-list', Meals::class);
-        yield MenuItem::linkToCrud('Catégories', 'fas fa-list', BigCategories::class);
+        
         yield MenuItem::linkToCrud('Sous-catégories', 'fas fa-list', Categories::class);
         yield MenuItem::linkToCrud('Images', 'fas fa-list', Images::class);
         yield MenuItem::linkToCrud('Plats', 'fas fa-list', Dishes::class);

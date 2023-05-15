@@ -22,17 +22,16 @@ class CategoriesCrudController extends AbstractCrudController
         return [
             
             TextField::new('title')->setLabel('Titre'),
-            AssociationField::new(propertyName: 'bigCategory')
             
-            ->setLabel('Catégorie'),
+            
         ];
     }
 
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setEntityLabelInSingular('Sous-catégorie')
-            ->setEntityLabelInPlural('Sous-catégories');
+            ->setEntityLabelInSingular('Catégorie')
+            ->setEntityLabelInPlural('Catégories');
             
     }
     

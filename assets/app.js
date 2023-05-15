@@ -6,14 +6,15 @@ import './bootstrap';
 
 import noUiSlider from 'nouislider';
 import 'nouislider/dist/nouislider.css';
+import Filter from './modules/Filter.js';
+
+new Filter(document.querySelector('.js-filter'));
 
 const slider = document.getElementById('price-slider');
 
 if(slider) {
   const min = document.getElementById('min');
   const max = document.getElementById('max');
-  
-   
   const range = noUiSlider.create(slider, {
     start: [min.value || parseInt(slider.dataset.min, 10), max.value || parseInt(slider.dataset.max, 10)],
     connect: true,
@@ -32,6 +33,10 @@ range.on('slide', function(values, handle) {
         max.value = Math.round(values[1]);
     }
 })
+range.on('end', function(values, handle) {
+    min.dispatchEvent(new Event('change'));
+
 }
 
+)}
 

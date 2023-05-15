@@ -112,7 +112,7 @@ public function __construct(ManagerRegistry $registry, PaginatorInterface $pagin
      {
         $query = $this
             ->createQueryBuilder('dishes')
-            ->select('dishes', 'cat')
+            ->select('cat', 'dishes')
             ->join('dishes.category', 'cat');
 
         if (!empty($search->searchText)) {

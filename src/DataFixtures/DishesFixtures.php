@@ -20,7 +20,7 @@ class DishesFixtures extends Fixture implements DependentFixtureInterface
         $categories = $manager->getRepository(Categories::class)->findAll();
         $images = $manager->getRepository(Images::class)->findAll();
 
-        for($dish = 1; $dish <= 20; $dish++){
+        for($dish = 1; $dish <= 40; $dish++){
             $dishes = new Dishes();
             $dishes->setTitle($faker->text(rand(5, 12)));
             $dishes->setPrice($faker->randomFloat(2, 5, 20));
