@@ -59,7 +59,7 @@ export default class Filter
 
 
   async loadUrl(url) {
-    //this.showLoader()
+    this.showLoader()
     
     const params = new URLSearchParams(url.split('?')[1] || '')
     params.set('ajax', 1)
@@ -79,13 +79,13 @@ export default class Filter
     } else {
       console.error(response)
     }
-    //this.hideLoader()
+    this.hideLoader()
 
   }
 
     /**
    * Remplace le contenu HTML de la grille avec un effet FLIP
-   * 
+   * @param {string} content
    * 
     */
     flipContent (content) {
@@ -132,9 +132,7 @@ export default class Filter
           onExit: exitSpring
         })
       })
-        
-      
-      
+                    
       flipper.recordBeforeUpdate()
       this.content.innerHTML = content
       this.content.querySelectorAll('.js-filterable').forEach(child => {

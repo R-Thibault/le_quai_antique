@@ -13,12 +13,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
        
         {% block stylesheets %} 
-         <style>
-         html, body{
-            min-height: 100%;
-         }
-         </style>
-        {% endblock %}
+         {% endblock %}
         <!--  JavaScript -->
         <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" defer></script>
         {{ encore_entry_link_tags('app') }}
