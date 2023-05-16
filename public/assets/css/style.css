@@ -6,10 +6,17 @@
 }
 html, body{
   min-height: 100%;
+  color: white;
 }
 
+body{
+  background-image: url(../background/bg-restaurant.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
-.vh-100 {
+.fullsize {
   min-height: 100%;
 }
 

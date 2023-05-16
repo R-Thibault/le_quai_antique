@@ -3,7 +3,6 @@
 namespace App\DataFixtures;
 
 use App\Entity\Dishes;
-use App\Entity\Images;
 use App\Entity\Categories;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
@@ -18,7 +17,6 @@ class DishesFixtures extends Fixture implements DependentFixtureInterface
     {
         $faker = Faker\Factory::create('fr_FR');
         $categories = $manager->getRepository(Categories::class)->findAll();
-        $images = $manager->getRepository(Images::class)->findAll();
 
         for($dish = 1; $dish <= 40; $dish++){
             $dishes = new Dishes();
@@ -30,9 +28,7 @@ class DishesFixtures extends Fixture implements DependentFixtureInterface
                 $dishes->addCategory($faker->randomElement($categories));
             }
             $dishes->setDescription($faker->paragraph(2));
-            for($i = 0; $i < $counter; $i++){
-                $dishes->addImage($faker->randomElement($images));
-            }
+           
                 
            
 
@@ -48,7 +44,6 @@ class DishesFixtures extends Fixture implements DependentFixtureInterface
     {
         return [
             CategoriesFixtures::class,
-            ImagesFixture::class,
         ];
     }
 

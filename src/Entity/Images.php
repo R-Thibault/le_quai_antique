@@ -5,11 +5,11 @@ namespace App\Entity;
 use App\Repository\ImagesRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 
 #[ORM\Entity(repositoryClass: ImagesRepository::class)]
-#[Vich\Uploadable]
+
 class Images
 {
     #[ORM\Id]
@@ -17,23 +17,17 @@ class Images
     #[ORM\Column]
     private ?int $id = null;
     
-    #[Vich\UploadableField(mapping : "dishes", fileNameProperty : "name", size : "size")]
-    private ?File $imageFile = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $imageName = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $name = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $title = null;
 
     #[ORM\ManyToOne(inversedBy: 'image')]
     private ?Dishes $dishes = null;
 
-    #[ORM\Column]
-    private ?int $size = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $title = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?\DateTimeImmutable $updatedAt = null;
+
     
     
     
@@ -42,46 +36,20 @@ class Images
         return $this->id;
     }
 
-    public function setImageFile(?File $imageFile): void
-    {
-        $this->imageFile = $imageFile;
 
-        if(null !== $imageFile ){
-            $this->updatedAt = new \DateTimeImmutable();
-        }
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
     }
 
-    public function getImageFile(): ?File
+    public function setImageName(string $imageName): self
     {
-        return $this->imageFile;
-    }
-    
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(string $title): self
-    {
-        $this->title = $title;
+        $this->imageName = $imageName;
 
         return $this;
     }
 
     
-
     public function getDishes(): ?Dishes
     {
         return $this->dishes;
@@ -94,33 +62,23 @@ class Images
         return $this;
     }
 
+
     public function __toString(): string
     {
         return $this->title;
     }
 
-    public function getSize(): ?int
+    public function getTitle(): ?string
     {
-        return $this->size;
+        return $this->title;
     }
 
-    public function setSize(int $size): self
+    public function setTitle(?string $title): self
     {
-        $this->size = $size;
+        $this->title = $title;
 
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeImmutable
-    {
-        return $this->updatedAt;
-    }
-
-    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): self
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
 
 }

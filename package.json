@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "flip-toolkit": "^7.0.13",
+        "masonry-layout": "^4.2.2",
         "nouislider": "^15.7.0"
     }
 }

@@ -8,9 +8,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <!-- Stylesheet -->
-        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">    
-        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">    
        
         {% block stylesheets %} 
          {% endblock %}
@@ -21,7 +21,7 @@
         {% block javascripts %}            
         {% endblock %}
     </head>
-    <body class="d-flex flex-column vh-100">
+    <body class="d-flex flex-column fullsize">
         {% include "_partials/_navbar.html.twig" %}
         
         {% if app.user and app.user.isVerified == false %}

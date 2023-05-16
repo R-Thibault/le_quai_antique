@@ -7,11 +7,11 @@ use App\Entity\Images;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
+
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use Vich\UploaderBundle\Form\Type\VichImageType;
+
 
 
 class ImagesCrudController extends AbstractCrudController
@@ -26,13 +26,14 @@ class ImagesCrudController extends AbstractCrudController
     {
         
            
-            yield TextField::new('title');
-            yield NumberField::new('size');
-            yield DateTimeField::new('updatedAt')
-            ->setDisabled();
-            yield AssociationField::new('dishes');
-            yield CollectionField::new('imageFile')->setFormType(VichImageType::class)->setLabel('Image');
-            //yield CollectionField::new('imageFile')->setFormType(ImagesCrudController::class)->setLabel('Images');
+        yield TextField::new('title', 'Titre de l\'image');
+        yield TextField::new('imageName', 'Nom de l\'image')->hideOnForm();
+        yield TextField::new('imagePath', 'Chemin de l\'image')
+        ->hideOnIndex();
+        yield AssociationField::new('dishes', 'plats')->setRequired(false);
+            yield ImageField::new('imageName', 'Image')
+                    ->setBasePath('/uploads/images/')
+                    ->setUploadDir('public/uploads/images/');
             
         
     }
