@@ -4,8 +4,12 @@
   padding: 0;
   box-sizing: border-box;
 }
-html, body{
+html{
   min-height: 100%;
+  
+}
+body{
+  min-height: 100vh;
   color: white;
 }
 
@@ -16,6 +20,10 @@ body{
   background-position: center;
 }
 
+h1{
+  color: black;
+}
+
 .fullsize {
   min-height: 100%;
 }
@@ -24,4 +32,10 @@ body{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+  margin: 20px;
+}
+
+#sticky-footer {
+  flex-shrink: none;
+  position: sticky;
 }
