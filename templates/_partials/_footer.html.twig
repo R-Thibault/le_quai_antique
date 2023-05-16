@@ -1,5 +1,27 @@
  <footer id="sticky-footer" class=" mt-auto flex-shrink-0 py-3 bg-dark text-white-50 ">
-    <div class="container text-center">
-      <small>Copyright &copy; Your Website</small>
-    </div>
+    <div class="container-fluid">
+    
+    
+  <h2>Nos Horaires</h2>
+    <div class="row">
+    
+     {% for day in days %}
+      <div class="col-1">
+      <h4>{{day.day}}</h4>
+      <div>
+      <h6>Matin</h6>
+      <p>{{day.openAm}}</p>
+      <p>{{day.closeAm}}</p>
+      </div>
+      <div>
+      <h6>Aprés-midi</h6>
+      <p>{{day.openPm}}</p>
+      <p>{{day.closePm}}</p>
+      </div>
+    
+      </div>
+      {% endfor %}
+      </div>
+      
+    
   </footer>

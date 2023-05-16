@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Data\SearchData;
 use App\Form\SearchForm;
 use App\Repository\DishesRepository;
+use App\Repository\PlanningRepository;
 use Knp\Component\Pager\Paginator;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class DishesController extends AbstractController
 {
     #[Route('/la-carte', name: 'app_dishes')]
-    public function index(DishesRepository $dishesRepository, Request $request,PaginatorInterface $paginatorInterface): Response
+    public function index(DishesRepository $dishesRepository, Request $request,PaginatorInterface $paginatorInterface, PlanningRepository $planningRepository): Response
     {
 
         $data = new SearchData();
@@ -33,8 +34,11 @@ class DishesController extends AbstractController
                 'sorting' => $this->renderView('la_carte/_sorting.html.twig', ['dishes' => $dishes]),
             ]);
         }
+
+        $days = $planningRepository->findAll();
         return $this->render('la_carte/index.html.twig', [
             'dishes' => $dishes,
+            'days' => $days,
             'form' => $form->createView(),
             'min' => $min,
             'max' => $max,

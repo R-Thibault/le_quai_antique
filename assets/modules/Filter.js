@@ -79,7 +79,7 @@ export default class Filter
     } else {
       console.error(response)
     }
-    this.hideLoader()
+   this.hideLoader()
 
   }
 
