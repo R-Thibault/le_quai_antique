@@ -11,10 +11,13 @@
         <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">    
-       
+       {% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+        {% endblock %}
        
         <!--  JavaScript -->
         <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" defer></script>
+        
         
         
     </head>
@@ -36,10 +39,9 @@
             
         
     </body>
-     {% block stylesheets %}
-    {{ encore_entry_link_tags('app') }}
- {% endblock %}
+     
  {% block javascripts %}
+ 
     {{ encore_entry_script_tags('app') }}
  {% endblock %}
 </html>

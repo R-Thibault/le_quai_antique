@@ -20,7 +20,9 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "bootstrap-datepicker": "^1.10.0",
         "flip-toolkit": "^7.0.13",
+        "js-datepicker": "^5.18.2",
         "masonry-layout": "^4.2.2",
         "nouislider": "^15.7.0"
     }

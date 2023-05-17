@@ -14,65 +14,112 @@ class Reservations
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $nb_of_persons = null;
+    #[ORM\Column(length: 255)]
+    private ?string $firstname = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $lastname = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $email = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $booking_date = null;
+    private ?\DateTimeInterface $date = null;
 
+    #[ORM\Column(type: Types::TIME_MUTABLE)]
+    private ?\DateTimeInterface $hour = null;
 
+    #[ORM\Column]
+    private ?int $nbOfPersons = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $allergies = null;
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $comments = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $amOrPm = null;
 
     #[ORM\ManyToOne(inversedBy: 'reservations')]
     private ?Users $user = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $firstname = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $lastname = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $email = null;
-
-    #[ORM\Column(type: Types::TIME_MUTABLE)]
-    private ?\DateTimeInterface $hour = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): self
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(string $lastname): self
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    public function getHour(): ?\DateTimeInterface
+    {
+        return $this->hour;
+    }
+
+    public function setHour(\DateTimeInterface $hour): self
+    {
+        $this->hour = $hour;
+
+        return $this;
+    }
+
     public function getNbOfPersons(): ?int
     {
-        return $this->nb_of_persons;
+        return $this->nbOfPersons;
     }
 
-    public function setNbOfPersons(int $nb_of_persons): self
+    public function setNbOfPersons(int $nbOfPersons): self
     {
-        $this->nb_of_persons = $nb_of_persons;
+        $this->nbOfPersons = $nbOfPersons;
 
         return $this;
     }
-
-    public function getBookingDate(): ?\DateTimeInterface
-    {
-        return $this->booking_date;
-    }
-
-    public function setBookingDate(\DateTimeInterface $booking_date): self
-    {
-        $this->booking_date = $booking_date;
-
-        return $this;
-    }
-
-   
 
     public function getAllergies(): ?string
     {
@@ -98,6 +145,18 @@ class Reservations
         return $this;
     }
 
+    public function getAmOrPm(): ?string
+    {
+        return $this->amOrPm;
+    }
+
+    public function setAmOrPm(?string $amOrPm): self
+    {
+        $this->amOrPm = $amOrPm;
+
+        return $this;
+    }
+
     public function getUser(): ?Users
     {
         return $this->user;
@@ -106,54 +165,6 @@ class Reservations
     public function setUser(?Users $user): self
     {
         $this->user = $user;
-
-        return $this;
-    }
-
-    public function getFirstname(): ?string
-    {
-        return $this->firstname;
-    }
-
-    public function setFirstname(?string $firstname): self
-    {
-        $this->firstname = $firstname;
-
-        return $this;
-    }
-
-    public function getLastname(): ?string
-    {
-        return $this->lastname;
-    }
-
-    public function setLastname(?string $lastname): self
-    {
-        $this->lastname = $lastname;
-
-        return $this;
-    }
-
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    public function getHour(): ?\DateTimeInterface
-    {
-        return $this->hour;
-    }
-
-    public function setHour(\DateTimeInterface $hour): self
-    {
-        $this->hour = $hour;
 
         return $this;
     }

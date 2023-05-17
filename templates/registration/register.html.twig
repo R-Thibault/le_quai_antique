@@ -3,14 +3,14 @@
 {% block title %}S'inscrire{% endblock %}
 
 {% block body %}
-<div class="d-flex flex-column justify-content-center align-items-center flex-grow-1">
+<div class="d-flex flex-column  flex-grow-1">
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
 
     
-    <h1>Inscription</h1>
-    <div >
+    <h1 class="text-white my-3 mx-md-5 mx-auto ">Inscription</h1>
+    <div class="bg-dark p-3 mx-3 my-auto align-self-center" >
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.plainPassword, {

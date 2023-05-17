@@ -2,10 +2,10 @@
 
 namespace App\Controller;
 
+
 use App\Entity\Reservations;
-use App\Repository\ReservationsRepository;
 use App\Repository\UsersRepository;
-use App\Form\ReservationsFormType;
+use App\Form\ReservationFormType;
 use App\Repository\PlanningRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,11 +16,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class ReservationsController extends AbstractController
 {
     #[Route('/reservations', name: 'app_reservations')]
-    public function index(ReservationsRepository $reservationsRepository, UsersRepository $usersRepository, Request $request, EntityManagerInterface $entityManager, PlanningRepository $planningRepository): Response
+    public function index( UsersRepository $usersRepository, Request $request, EntityManagerInterface $entityManager, PlanningRepository $planningRepository): Response
     {
         $reservation = new Reservations();
         
-        $formReservation = $this->createForm(ReservationsFormType::class, $reservation);
+        $formReservation = $this->createForm(ReservationFormType::class, $reservation);
         $formReservation->handleRequest($request);
         if ($formReservation->isSubmitted() && $formReservation->isValid()) {
             
