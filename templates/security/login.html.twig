@@ -3,20 +3,22 @@
 {% block title %}Connexion{% endblock %}
 
 {% block body %}
-<div class="d-flex flex-column justify-content-center align-items-center flex-grow-1">
+<div class="d-flex flex-column  flex-grow-1">
     {% if app.user %}
         <div class="mb-3">
             Bonjour, {{ app.user.userIdentifier }}, vous êtes connecté.  <a href="{{ path('app_logout') }}">Déconnexion</a>
         </div>
     {% endif %}
-<form method="post" class="  ">
+    <h1 class="text-white my-3 mx-md-5 mx-auto">Connexion</h1>
+    <div class="bg-dark p-3 mx-3 my-auto align-self-center">
+<form method="post" >
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
     
    
-    <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+    
     <label for="inputEmail" class="mb-3">Email</label>
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control mb-3" autocomplete="email" required autofocus>
     <label for="inputPassword" class="mb-3">Mot de passe</label>
@@ -27,9 +29,9 @@
             <button class="btn btn-lg btn-primary m-3" type="submit">
         Sign in
     </button>
-    <a href="{{path('app_forgot_password_request')}}">Reset your password</a>
+    <a href="{{path('app_forgot_password_request')}}">Réinitialiser votre mot de passe</a>
 </form>
-     
+     </div>
     </div>
     
 

@@ -1,0 +1,22 @@
+{{form_start(formReservation)}}
+{{form_row(formReservation.booking_date)}}
+{{form_row(formReservation.hour)}}
+{% if app.User %}
+  {{form_row(formReservation.lastname, {'value': app.User.lastname})}}
+  {{form_row(formReservation.firstname, {'value': app.User.firstname})}}
+  {{form_row(formReservation.email, {'value': app.User.email})}}
+  {{form_row(formReservation.nbOfPersons, {'value': app.User.nbOfPersons})}}
+{{form_row(formReservation.allergies, {'value': app.User.allergies})}}
+
+{% else %}
+  {{form_row(formReservation.lastname)}}
+  {{form_row(formReservation.firstname)}}
+  {{form_row(formReservation.email)}}
+  {{form_row(formReservation.nbOfPersons)}}
+{{form_row(formReservation.allergies)}}
+{{form_row(formReservation.comments)}}
+{% endif %}
+{{form_row(formReservation.comments)}}
+
+<button class="btn btn-primary" type="submit">Réserver</button>
+    {{form_end(formReservation)}}

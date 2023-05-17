@@ -19,6 +19,6 @@ class MenusController extends AbstractController
         $meals = $meals->findAll();
         $days = $planningRepository->findAll();
 
-        return $this->render('menus/index.html.twig', compact('combos', 'meals'));
+        return $this->render('menus/index.html.twig', compact('combos', 'meals', 'days'));
     }
 }

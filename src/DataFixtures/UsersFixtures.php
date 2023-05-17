@@ -3,13 +3,15 @@
 namespace App\DataFixtures;
 
 use App\Entity\Users;
+use App\Entity\Reservations;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Faker;
 
-class UsersFixtures extends Fixture
+class UsersFixtures extends Fixture 
 {
     public function __construct(private UserPasswordHasherInterface $passwordHasher,
     private SluggerInterface $slugger)
@@ -29,7 +31,7 @@ class UsersFixtures extends Fixture
          $manager->persist($admin);
 
          $faker = Faker\Factory::create('fr_FR');
-
+        $reservations = $manager->getRepository(Reservations::class)->findAll();
         for($usr = 1; $usr <=6; $usr++){
             $user = new Users();
             $user->setEmail($faker->email());
@@ -45,4 +47,6 @@ class UsersFixtures extends Fixture
 
         $manager->flush();
     }
+
+   
 }

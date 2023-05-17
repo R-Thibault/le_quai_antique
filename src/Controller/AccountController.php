@@ -24,6 +24,7 @@ class AccountController extends AbstractController
         }
 
         $user = $this->getUser();
+        
         return $this->render('account/index.html.twig', compact('user'));  
 
     }

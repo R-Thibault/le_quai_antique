@@ -1,27 +1,21 @@
  <footer id="sticky-footer" class=" mt-auto flex-shrink-0 py-3 bg-dark text-white-50 ">
-    <div class="container-fluid">
-    
-    
-  <h2>Nos Horaires</h2>
-    <div class="row">
-    
-     {% for day in days %}
-      <div class="col-1">
-      <h4>{{day.day}}</h4>
-      <div>
-      <h6>Matin</h6>
-      <p>{{day.openAm}}</p>
-      <p>{{day.closeAm}}</p>
-      </div>
-      <div>
-      <h6>Aprés-midi</h6>
-      <p>{{day.openPm}}</p>
-      <p>{{day.closePm}}</p>
-      </div>
-    
-      </div>
-      {% endfor %}
-      </div>
-      
+    <div  class="container-fluid demo-bg  ">
+
+<div class="row align-items-center">
+<div class="col-lg-4 text-dark my-2"> ©2023 Thibault Rossa</div>
+<div class="col-lg-4 text-dark my-4"> <div class="d-flex flex-column"><span>Le Quai Antique, 7 place d'ici, 69000 Lyon</span> <span>Tel : 00 00 00 00 00</span></div> </div>
+<div class="col-lg-4">
+<div class="business-hours">
+<h2 class="title">Horaires d'ouverture</h2>
+<ul class="list-unstyled opening-hours">
+{% for day in days %}
+  <li>{{day.day}} <span class="pull-right">{{day.openingAm}} | {{day.openingPM}}</span></li>
+{% endfor %}
+
+</ul>
+</div>
+</div>
+</div>
+</div>
     
   </footer>

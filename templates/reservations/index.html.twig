@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réservation{% endblock %}
+
+{% block body %}
+<div class="d-flex flex-column  flex-grow-1">
+    
+        
+            <h1 class="text-white my-3 mx-md-5 mx-auto">Réservation</h1>
+            <div class="bg-dark p-3 m-3 justify-self-center align-self-center">
+            {% include 'reservations/_form.html.twig' %}
+        </div>
+    
+</div>
+{% include "_partials/_footer.html.twig" %}
+{% endblock %}

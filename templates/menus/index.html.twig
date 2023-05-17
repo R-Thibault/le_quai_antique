@@ -5,7 +5,7 @@
          <style>
             .grid {
             display:grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             
             }   
@@ -15,11 +15,11 @@
         {% endblock %}
 {% block body %}
 
-    <div class="container-fluid text-center">
+    <div class="container-fluid ">
     <div class="border-bottom pb-2 mb-5">
-    <h1 class="text-decoration-underline">Nos menus</h1>
+    <h1 class="text-white">Nos menus</h1>
     </div>
-    <div class="grid">
+    <div class="grid text-center">
     
     
     
@@ -34,5 +34,5 @@
     
     </div>
     </div>
-
+{% include "_partials/_footer.html.twig" %}
 {% endblock %}
