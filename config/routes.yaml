@@ -1,3 +1,14 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+app_legals_:
+    resource: App\Controller\LegalsController
+    prefix: /legals
+
+app_legals_mentions:
+    path: /mentions
+    controller: App\Controller\LegalsController::mentions
+
+app_legals_privacy:
+    path: /privacy
+    controller: App\Controller\LegalsController::privacy

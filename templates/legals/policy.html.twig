@@ -3,7 +3,9 @@
 {% block title %}Politique de confidentialité{% endblock %}
 
 {% block body %}
-    <h1>Politique de confidentialité</h1>
+<div class="d-flex flex-column  flex-grow-1">
+    <h1 class="text-white my-3 mx-md-5 mx-auto">Politique de confidentialité</h1>
+<div class="bg-dark p-3 mx-3 my-auto align-self-center">
     <p>Cette politique de confidentialité décrit comment Thibault Rossa collecte, utilise et protège les informations que vous nous fournissez lorsque vous utilisez ce site.</p>
     <h2>Collecte d'informations</h2>
     <p>Nous collectons les informations que vous nous fournissez lorsque vous créez un compte, effectuez une réservation ou utilisez d'autres fonctionnalités de ce site. Les informations que nous collectons peuvent inclure votre nom, votre adresse e-mail, votre numéro de téléphone, votre adresse postale et d'autres informations personnelles.</p>
@@ -15,4 +17,9 @@
     <p>Ce site utilise des cookies pour améliorer votre expérience utilisateur. Les cookies sont des fichiers texte placés sur votre ordinateur pour collecter des informations standard de journalisation d'Internet et des informations comportementales. Vous pouvez choisir de refuser les cookies en modifiant les paramètres de votre navigateur.</p>
     <h2>Modification de la politique de confidentialité</h2>
     <p>Nous nous réservons le droit de modifier cette politique de confidentialité à tout moment. Nous vous encourageons à consulter régulièrement cette page pour prendre connaissance des éventuelles modifications.</p>
+ 
+  <a href="{{path('app_home')}}" class="btn btn-secondary">Acceuil</a>
+  </div>
+    
+    </div>
 {% endblock %}

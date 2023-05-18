@@ -3,7 +3,10 @@
 {% block title %}Mentions légales{% endblock %}
 
 {% block body %}
-    <h1>Mentions légales</h1>
+<div class="d-flex flex-column  flex-grow-1">
+ <h1 class="text-white my-3 mx-md-5 mx-auto">Mentions légales</h1>
+<div class="bg-dark p-3 mx-3 my-auto align-self-center">
+   
     <p>Ce site est édité par Thibault Rossa, à titre personnel et éducatif.</p>
     <p>Le site est hébergé par [nom de l'hébergeur], société [forme juridique] au capital de [montant du capital social] euros, immatriculée au RCS de [ville d'immatriculation] sous le numéro [numéro d'immatriculation], dont le siège social est situé au [adresse du siège social].</p>
     <h2>Protection des données personnelles</h2>
@@ -17,4 +20,8 @@
         <li>Vous ne pouvez pas utiliser ce site pour collecter des informations sur d'autres utilisateurs.</li>
         <li>Vous ne pouvez pas utiliser ce site pour violer les droits de propriété intellectuelle d'autrui.</li>
     </ul>
+<a href="{{path('app_home')}}" class="btn btn-secondary">Acceuil</a>
+</div>
+    
+    </div>
 {% endblock %}
