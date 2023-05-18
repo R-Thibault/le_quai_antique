@@ -6,6 +6,7 @@ use App\Entity\Users;
 use App\Repository\UsersRepository;
 use App\Form\UserEditFormType;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\PlanningRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AccountController extends AbstractController
 {
     #[Route('/account', name: '_index')]
-    public function index(): Response
+    public function index(PlanningRepository $planningRepository): Response
     {
         if (!$this->getUser()) {
             return $this->redirectToRoute('app_home');
@@ -24,13 +25,13 @@ class AccountController extends AbstractController
         }
 
         $user = $this->getUser();
-        
-        return $this->render('account/index.html.twig', compact('user'));  
+        $days = $planningRepository->findAll();
+        return $this->render('account/index.html.twig', compact('user', 'days'));  
 
     }
 
     #[Route('/account/edit/{id}', name: '_edit')]
-    public function edit(Users $user, Request $request, EntityManagerInterface $entityManagerInterface, UsersRepository $usersRepository ): Response
+    public function edit(Users $user, Request $request, EntityManagerInterface $entityManagerInterface, UsersRepository $usersRepository, PlanningRepository $planningRepository ): Response
     {
         if (!$this->getUser()) {
             return $this->redirectToRoute('app_home');
@@ -49,10 +50,11 @@ class AccountController extends AbstractController
         }
 
         
-        
+        $days = $planningRepository->findAll();
         return $this->render('account/edit.html.twig', [
             'user' => $user,
-            'userEditForm' => $userEditForm->createView()
+            'userEditForm' => $userEditForm->createView(),
+            'days' => $days
         ]);
 
     }

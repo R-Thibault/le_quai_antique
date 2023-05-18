@@ -13,6 +13,7 @@ class SecurityController extends AbstractController
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils, PlanningRepository $planningRepository): Response
     {
+        $days = $planningRepository->findAll();
         if ($this->getUser()) {
             return $this->redirectToRoute('target_path');
         }
@@ -22,7 +23,7 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
       
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error, 'days' => $days]);
     }
 
     #[Route(path: '/logout', name: 'app_logout')]

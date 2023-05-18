@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Users;
 use App\Form\RegistrationFormType;
+use App\Repository\PlanningRepository;
 use App\Repository\UsersRepository;
 use App\Security\EmailVerifier;
 use App\Security\UserAuthenticator;
@@ -29,7 +30,7 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, UserAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, UserAuthenticator $authenticator, EntityManagerInterface $entityManager, PlanningRepository $planningRepository): Response
     {
         $user = new Users();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -63,14 +64,15 @@ class RegistrationController extends AbstractController
                 $request
             );
         }
-
+        $days = $planningRepository->findAll();
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
+            'days' => $days
         ]);
     }
 
     #[Route('/verify/email', name: 'app_verify_email')]
-    public function verifyUserEmail(Request $request, TranslatorInterface $translator, UsersRepository $usersRepository): Response
+    public function verifyUserEmail(Request $request, TranslatorInterface $translator, UsersRepository $usersRepository, PlanningRepository $planningRepository): Response
     {
         $id = $request->get('id');
 
@@ -95,7 +97,7 @@ class RegistrationController extends AbstractController
 
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'Your email address has been verified.');
-
-        return $this->redirectToRoute('app_home');
+        $days = $planningRepository->findAll();
+        return $this->redirectToRoute('app_home', ['days' => $days]);
     }
 }

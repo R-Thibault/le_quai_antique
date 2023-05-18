@@ -1,4 +1,10 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Dancing+Script:wght@400;700&family=Fuzzy+Bubbles:wght@400;700&family=Poppins:wght@400;700&display=swap');
+:root{
+  --bs-body-font-family: 'poppins', cursive;
+  --bs-title-font-family: 'Caveat', cursive;
+  --bs-secondary-font-family: 'Fuzzy Bubbles', cursive;
+  --bs-extra-font-family: 'Dancing Script', cursive;
+}
 *{
   margin: 0;
   padding: 0;
@@ -20,9 +26,24 @@ body{
   background-position: center;
 }
 
+.ff-secondary{
+  font-family: var(--bs-secondary-font-family);
+  font-size: 1.2em;
+}
+
 h1{
   color: black;
 }
+h1, h2, h3, h4, h5, h6{
+  font-family: var(--bs-title-font-family);
+}
+
+.logo{
+  font-family: var(--bs-extra-font-family);
+  font-size: 2.5em;
+}
+
+
 
 .fullsize {
   min-height: 100%;
