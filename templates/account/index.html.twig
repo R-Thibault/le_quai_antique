@@ -3,11 +3,10 @@
 {% block title %}Quai Antique | Mon Compte{% endblock %}
 
 {% block body %}
-<div class="container">
-<div class="col">
-<div class="row">
-<h1>Mon Compte</h1>
-<div class="col">
+<div class="d-flex flex-column  flex-grow-1">
+
+<h1class="text-white my-3 mx-md-5 mx-auto ">Mon Compte</h1>
+<div class="bg-dark p-3 mx-3 my-auto align-self-center">
 <h2>Informations personnelles</h2>
 <p>Nom : {{ user.lastname }}</p>
 <p>Prénom : {{ user.firstname }}</p>
@@ -30,9 +29,7 @@ Information non renseignée
 
 
 
-</div>
 
-</div>
 </div>
 
 </div>
