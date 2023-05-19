@@ -7,6 +7,7 @@ use App\Repository\UsersRepository;
 use App\Form\UserEditFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\PlanningRepository;
+use App\Repository\ReservationsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,17 +17,17 @@ use Symfony\Component\Routing\Annotation\Route;
 class AccountController extends AbstractController
 {
     #[Route('/account', name: '_index')]
-    public function index(PlanningRepository $planningRepository): Response
+    public function index(PlanningRepository $planningRepository, ReservationsRepository $reservationsRepository): Response
     {
         if (!$this->getUser()) {
             return $this->redirectToRoute('app_home');
         }elseif ($this->getUser()->getRoles()[0] === 'ROLE_ADMIN') {
             return $this->redirectToRoute('app_admin');
         }
-
         $user = $this->getUser();
+        $reservation = $reservationsRepository->findBy(['user' => $user]);
         $days = $planningRepository->findAll();
-        return $this->render('account/index.html.twig', compact('user', 'days'));  
+        return $this->render('account/index.html.twig', compact('user', 'days', 'reservation'));  
 
     }
 

@@ -211,35 +211,6 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-//    /**
-//     * @return Collection<int, Reservations>
-//     */
-//    public function getReservations(): Collection
-//    {
-//        return $this->reservations;
-//   }
-//
-//    public function addReservation(Reservations $reservation): self
-//    {
-//       if (!$this->reservations->contains($reservation)) {
-//          $this->reservations->add($reservation);
-//            $reservation->setUser($this);
-//        }
-//
-//        return $this;
-//    }
-//
-//    public function removeReservation(Reservations $reservation): self
-//    {
-//        if ($this->reservations->removeElement($reservation)) {
-//            // set the owning side to null (unless already changed)
-//            if ($reservation->getUser() === $this) {
-//                $reservation->setUser(null);
-//            }
-//        }
-//
-//        return $this;
-//    }
 
     public function __toString(): string
     {
