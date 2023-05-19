@@ -25,9 +25,9 @@ class AccountController extends AbstractController
             return $this->redirectToRoute('app_admin');
         }
         $user = $this->getUser();
-        $reservation = $reservationsRepository->findBy(['user' => $user]);
+        $reservations = $reservationsRepository->findBy(['user' => $user]);
         $days = $planningRepository->findAll();
-        return $this->render('account/index.html.twig', compact('user', 'days', 'reservation'));  
+        return $this->render('account/index.html.twig', compact('user', 'days', 'reservations'));  
 
     }
 

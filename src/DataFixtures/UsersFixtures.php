@@ -11,7 +11,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Faker;
 
-class UsersFixtures extends Fixture 
+class UsersFixtures extends Fixture implements DependentFixtureInterface
 {
     public function __construct(private UserPasswordHasherInterface $passwordHasher,
     private SluggerInterface $slugger)
@@ -39,13 +39,20 @@ class UsersFixtures extends Fixture
             $user->setFirstname($faker->firstName());
             $user->setNbOfPersons($faker->numberBetween(1, 10));
             $user->setAllergies($faker->text(7));
-            
+        $user->addReservation($faker->randomElement($reservations));
             $user->setPassword($this->passwordHasher->hashPassword($user, 'secret'));
 
             $manager->persist($user);
         }
 
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return [
+            ReservationsFixture::class,
+        ];
     }
 
    
