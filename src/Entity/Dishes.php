@@ -27,17 +27,20 @@ class Dishes
     #[ORM\Column]
     private ?float $price = null;
 
-    #[ORM\OneToMany(mappedBy: 'dishes', targetEntity: Images::class, cascade: ['persist'])]
-    private Collection $image;
+
 
     #[ORM\ManyToMany(targetEntity: Categories::class, inversedBy: 'dishes')]
     private Collection $category;
 
+    #[ORM\OneToMany(mappedBy: 'dishes', targetEntity: Images::class)]
+    private Collection $images;
+
 
     public function __construct()
     {
-        $this->image = new ArrayCollection();
+        //$this->image = new ArrayCollection();
         $this->category = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -81,36 +84,7 @@ class Dishes
         return $this;
     }
 
-    /**
-     * @return Collection<int, Images>
-     */
-    public function getImage(): Collection
-    {
-        return $this->image;
-    }
-
-    public function addImage(Images $image): self
-    {
-        if (!$this->image->contains($image)) {
-            $this->image->add($image);
-            $image->setDishes($this);
-        }
-
-        return $this;
-    }
-
-    public function removeImage(Images $image): self
-    {
-        if ($this->image->removeElement($image)) {
-            // set the owning side to null (unless already changed)
-            if ($image->getDishes() === $this) {
-                $image->setDishes(null);
-            }
-        }
-
-        return $this;
-    }
-
+    
     /**
      * @return Collection<int, Categories>
      */
@@ -141,6 +115,36 @@ class Dishes
 
             
            
+    }
+
+    /**
+     * @return Collection<int, Images>
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Images $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images->add($image);
+            $image->setDishes($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Images $image): self
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getDishes() === $this) {
+                $image->setDishes(null);
+            }
+        }
+
+        return $this;
     }
 
 

@@ -25,6 +25,7 @@ class MealsCrudController extends AbstractCrudController
             TextField::new('title')->setLabel('Titre'),
             TextEditorField::new('description'),
             NumberField::new('price')->setLabel('Prix'),
+            TextField::new('note')->setLabel('Note'),
             AssociationField::new('combosMeal')->setLabel('Menu'),
         ];
     }

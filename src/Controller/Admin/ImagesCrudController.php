@@ -28,8 +28,7 @@ class ImagesCrudController extends AbstractCrudController
            
         yield TextField::new('title', 'Titre de l\'image');
         yield TextField::new('imageName', 'Nom de l\'image')->hideOnForm();
-        yield TextField::new('imagePath', 'Chemin de l\'image')
-        ->hideOnIndex();
+       
         yield AssociationField::new('dishes', 'plats')->setRequired(false);
             yield ImageField::new('imageName', 'Image')
                     ->setBasePath('/uploads/images/')

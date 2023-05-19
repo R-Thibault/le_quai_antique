@@ -21,11 +21,11 @@ class Images
     private ?string $imageName = null;
 
 
-    #[ORM\ManyToOne(inversedBy: 'image')]
-    private ?Dishes $dishes = null;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $title = null;
+
+    #[ORM\ManyToOne(inversedBy: 'images')]
+    private ?Dishes $dishes = null;
 
 
     
@@ -50,17 +50,7 @@ class Images
     }
 
     
-    public function getDishes(): ?Dishes
-    {
-        return $this->dishes;
-    }
 
-    public function setDishes(?Dishes $dishes): self
-    {
-        $this->dishes = $dishes;
-
-        return $this;
-    }
 
 
     public function __toString(): string
@@ -76,6 +66,18 @@ class Images
     public function setTitle(?string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getDishes(): ?Dishes
+    {
+        return $this->dishes;
+    }
+
+    public function setDishes(?Dishes $dishes): self
+    {
+        $this->dishes = $dishes;
 
         return $this;
     }

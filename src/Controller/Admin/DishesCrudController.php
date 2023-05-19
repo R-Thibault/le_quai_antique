@@ -31,8 +31,12 @@ class DishesCrudController extends AbstractCrudController
         yield TextField::new('title')->setLabel('Titre');
         yield TextEditorField::new('description');
         yield NumberField::new('price')->setNumDecimals(2)->setLabel('Prix');
-        yield AssociationField::new('category')->setLabel('Catégorie')->setRequired(true);
-        yield AssociationField::new('image')->setLabel('Image')->setRequired(true);
+        yield AssociationField::new('category')
+                                ->setLabel('Catégorie')
+                                ->setRequired(true)
+                                ;
+
+        
     }
 
     public function configureCrud(Crud $crud): Crud
