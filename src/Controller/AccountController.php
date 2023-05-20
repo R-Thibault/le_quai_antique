@@ -4,6 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Users;
 use App\Repository\UsersRepository;
+use App\Form\ReservationsEditFormType;
+use App\Form\ReservationsFormType;
+use App\Entity\Reservations;
 use App\Form\UserEditFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\PlanningRepository;
@@ -16,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/account', name: 'app_account')]
 class AccountController extends AbstractController
 {
-    #[Route('/account', name: '_index')]
+    #[Route('/{id}', name: '_index')]
     public function index(PlanningRepository $planningRepository, ReservationsRepository $reservationsRepository): Response
     {
         if (!$this->getUser()) {
@@ -31,7 +34,7 @@ class AccountController extends AbstractController
 
     }
 
-    #[Route('/account/edit/{id}', name: '_edit')]
+    #[Route('/edit/{id}', name: '_edit')]
     public function edit(Users $user, Request $request, EntityManagerInterface $entityManagerInterface, UsersRepository $usersRepository, PlanningRepository $planningRepository ): Response
     {
         if (!$this->getUser()) {
@@ -59,4 +62,6 @@ class AccountController extends AbstractController
         ]);
 
     }
+
+    
 }

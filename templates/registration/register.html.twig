@@ -3,7 +3,7 @@
 {% block title %}S'inscrire{% endblock %}
 
 {% block body %}
-<div class="d-flex flex-column  flex-grow-1">
+<div class="d-flex flex-column  flex-grow-1 my-5">
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}

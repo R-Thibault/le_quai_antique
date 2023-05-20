@@ -4,6 +4,9 @@ namespace App\Controller;
 
 
 use App\Entity\Reservations;
+use App\Entity\Users;
+use App\Repository\ReservationsRepository;
+use App\Form\ReservationsEditFormType;
 use App\Repository\UsersRepository;
 use App\Form\ReservationFormType;
 use App\Repository\PlanningRepository;
@@ -47,5 +50,36 @@ class ReservationsController extends AbstractController
        
 
         return $this->renderForm('reservations/index.html.twig', compact('formReservation', 'days'));
+    }
+
+    #[Route('/reservations/edit/{id}', name: 'app_reservations_edit')]
+    public function editReservation( Reservations $reservations, Request $request, EntityManagerInterface $entityManagerInterface, UsersRepository $usersRepository, PlanningRepository $planningRepository, ReservationsRepository $reservationsRepository) 
+    {
+   
+        $editReservationForm = $this->createForm(ReservationsEditFormType::class, $reservations);
+        $editReservationForm->handleRequest($request);
+
+        if ($editReservationForm->isSubmitted() && $editReservationForm->isValid()) {
+            $entityManagerInterface->persist($reservations);
+            $entityManagerInterface->flush();
+            $this->addFlash('success', 'Votre réservation a bien été modifiée');
+            return $this->redirectToRoute('app_account_index');
+        }
+        $days = $planningRepository->findAll();
+        return $this->render('account/resaEdit.html.twig', [
+
+            'editReservationForm' => $editReservationForm->createView(),
+            'days' => $days
+        ]);
+    }
+
+    #[Route('/reservations/delete/{id}', name: 'app_reservations_delete')]
+    public function deleteReservation(Reservations $reservations, EntityManagerInterface $entityManagerInterface)
+    {
+        
+        $entityManagerInterface->remove($reservations);
+        $entityManagerInterface->flush();
+        $this->addFlash('success', 'Votre réservation a bien été supprimée');
+        return $this->redirectToRoute('app_home');
     }
 }

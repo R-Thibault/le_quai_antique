@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\ImagesRepository;
+use App\Entity\Users;
 use App\Repository\PlanningRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +16,9 @@ class HomeController extends AbstractController
     {
         $images = $imagesRepository->findAll();
         $days = $planningRepository->findAll();
-        
+      
+
+
         return $this->render('home/index.html.twig', compact('images','days'));
     }
 }

@@ -8,16 +8,18 @@
     <h1 class="text-white my-3 mx-md-5 mx-auto">Modification du compte</h1>
     <div class="bg-dark p-3 mx-3 my-auto align-self-center">
     
-    {{form_start(userEditForm)}}
-{{form_row(userEditForm.lastname)}}
-{{form_row(userEditForm.firstname)}}
-    {{form_row(userEditForm.email)}}
-{{form_row(userEditForm.nb_of_persons)}}
-    {{form_row(userEditForm.allergies)}}
-    
+    {{form_start(editReservationForm)}}
+    {{form_row(editReservationForm.date)}}
+    {{form_row(editReservationForm.hour)}}
+{{form_row(editReservationForm.lastname)}}
+{{form_row(editReservationForm.firstname)}}
+    {{form_row(editReservationForm.email)}}
+{{form_row(editReservationForm.nbOfPersons)}}
+    {{form_row(editReservationForm.allergies)}}
+    {{form_row(editReservationForm.comments)}}
 <button type="submit" class="btn btn-primary">Modifier</button>
     
-{{form_end(userEditForm)}}
+{{form_end(editReservationForm)}}
 
    
     

@@ -3,7 +3,7 @@
 {% block title %}Connexion{% endblock %}
 
 {% block body %}
-<div class="d-flex flex-column  flex-grow-1">
+<div class="d-flex flex-column  flex-grow-1 my-5">
     {% if app.user %}
         <div class="mb-3">
             Bonjour, {{ app.user.userIdentifier }}, vous êtes connecté.  <a href="{{ path('app_logout') }}">Déconnexion</a>
