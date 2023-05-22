@@ -12,13 +12,13 @@ class PlanningFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-             $this->createPlanning('Lundi', new DateTime('11:00'), new DateTime('14:00'), new DateTime('19:00'), new DateTime('21:00'), false, false, $manager);
-                $this->createPlanning('Mardi', new DateTime('11:00'), new DateTime('14:00'), new DateTime('19:00'), new DateTime('21:00'), false, false, $manager);
-                $this->createPlanning('Mercredi', new DateTime('11:00'), new DateTime('14:00'), new DateTime('19:00'), new DateTime('21:00'), false, false, $manager);
-                $this->createPlanning('Jeudi', new DateTime('11:00'), new DateTime('14:00'), new DateTime('19:00'), new DateTime('21:00'), false, false, $manager);
-                $this->createPlanning('Vendredi', new DateTime('11:00'), new DateTime('14:00'), new DateTime('19:00'), new DateTime('21:00'), false, false, $manager);
-                $this->createPlanning('Samedi', new DateTime('11:00'), new DateTime('14:00'), new DateTime('19:00'), new DateTime('21:00'), false, false, $manager);
-                $this->createPlanning('Dimanche', new DateTime('11:00'), new DateTime('14:00'), new DateTime('19:00'), new DateTime('21:00'), false, false, $manager);
+             $this->createPlanning('Monday','Lundi', '11:00', '14:00', '19:00', '22:00', false, false, $manager);
+                $this->createPlanning('Tuesday','Mardi', '11:00', '14:00', '19:00', '22:00', false, false, $manager);
+                $this->createPlanning('Wednesday','Mercredi', '11:00', '14:00', '19:00', '22:00', false, false, $manager);
+                $this->createPlanning('Thursday','Jeudi', '11:00', '14:00', '19:00', '22:00', false, false, $manager);
+                $this->createPlanning('Friday','Vendredi', '11:00', '14:00', '19:00', '22:00', false, false, $manager);
+                $this->createPlanning('Saturday','Samedi', '11:00', '14:00', '19:00', '22:00', false, false, $manager);
+                $this->createPlanning('Sunday','Dimanche', '11:00', '14:00', '19:00', '22:00', false, false, $manager);
      
         
 
@@ -26,10 +26,11 @@ class PlanningFixtures extends Fixture
         $manager->flush();
     }
 
-    public function createPlanning(string $day, DateTime $openAm, DateTime  $closeAm,  DateTime $openPm,  DateTime $closePm, bool $isClosedAm ,bool $isClosedPm ,ObjectManager $manager): Planning
+    public function createPlanning(string $day,string $dayFr, string $openAm, string  $closeAm,  string $openPm,  string $closePm, bool $isClosedAm ,bool $isClosedPm ,ObjectManager $manager): Planning
     {
         $planning = new Planning();
         $planning->setDay($day);
+        $planning->setDayFr($dayFr);
         $planning->setOpenAm($openAm);
         $planning->setCloseAm($closeAm);
         $planning->setOpenPm($openPm);

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Accueil{% endblock %}
 {% block stylesheets %} 
          
          <link rel="stylesheet" href="{{ asset('assets/css/homeStyle.css') }}">
@@ -20,7 +20,7 @@
     {% endfor %}
     </div>
     </div>
-    <a href="{{path('app_reservations')}}" class="btn btn-primary my-auto mx-5">Reservez</a>
+    <a href="{{path('app_reservations_crud_new')}}" class="btn btn-primary my-auto mx-5">Reservez</a>
     </div>
 
 {% endblock %}

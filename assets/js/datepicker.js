@@ -5,7 +5,7 @@ $(document).ready(function() {
     // you may need to change this code if you are not using Bootstrap Datepicker
     var dateToday = new Date();
     $('.js-datepicker').datepicker({
-        format: 'dd-mm-yyyy',
+        format: 'dd-MM-yyyy',
         startDate : dateToday,
         language: 'fr',
         autoclose: true,

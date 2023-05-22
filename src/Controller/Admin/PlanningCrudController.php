@@ -23,10 +23,10 @@ class PlanningCrudController extends AbstractCrudController
         return [
             
              TextField::new('day')->setLabel('Jour'),
-             TimeField::new('openAm')->setLabel('Ouverture midi'),
-              TimeField::new('closeAm')->setLabel('Fermeture midi'),
-              TimeField::new('openPm')->setLabel('Ouverture soir'),
-               TimeField::new('closePm')->setLabel('Fermeture soir'),
+             TextField::new('openAm')->setLabel('Ouverture midi'),
+              TextField::new('closeAm')->setLabel('Fermeture midi'),
+              TextField::new('openPm')->setLabel('Ouverture soir'),
+               TextField::new('closePm')->setLabel('Fermeture soir'),
             BooleanField::new('isClosedAm')->setLabel('Fermeture le midi')->setFormType(CheckboxType::class),
             BooleanField::new('isClosedPm')->setLabel('Fermeture le soir')->setFormType(CheckboxType::class),
                                                 

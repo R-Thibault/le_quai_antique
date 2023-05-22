@@ -15,27 +15,28 @@ class ReservationsFixture extends Fixture
     {
         $faker = Faker\Factory::create('fr_FR');
         $users = $manager->getRepository(Users::class)->findBy( [], ['id' => 'ASC']);
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 30; $i++) {
             $reservation = new Reservations();
-            $reservation->setDate($faker->dateTimeBetween('+0 days', '+1 years'));
-        $reservation->setHour($faker->dateTime('H:i:s'));
+    $reservation->setDateTime($faker->dateTimeBetween('now', '+5 days'));
+        
             $reservation->setNbOfPersons($faker->numberBetween(1, 10));
             $reservation->setLastname($faker->lastName);
             $reservation->setFirstname($faker->firstName);
             $reservation->setEmail($faker->email);
+            $reservation->setAmOrPm('pm');
             $manager->persist($reservation);
         }
-        for($i = 0; $i < 10; $i++){
+        for($i = 0; $i < 30; $i++){
             
             $reservation = new Reservations();
-            $reservation->setDate($faker->dateTimeBetween('+0 days', '+1 years'));
-            $reservation->setHour($faker->dateTime('H:i:s'));
+            $reservation->setDateTime($faker->dateTimeBetween('now', '+5 days'));
+            
             $reservation->setNbOfPersons($faker->numberBetween(1, 10));
             $reservation->setUser($faker->randomElement($users));
             $reservation->setLastname($faker->lastName);
             $reservation->setFirstname($faker->firstName);
             $reservation->setEmail($faker->email);
-            
+            $reservation->setAmOrPm('pm');
             $manager->persist($reservation);
         }
 

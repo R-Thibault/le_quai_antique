@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Reservations;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use DateTime;
 
 /**
  * @extends ServiceEntityRepository<Reservations>
@@ -38,6 +39,22 @@ class ReservationsRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    public function totalPersons(DateTime $date, string $amOrPm): int
+{
+    
+    $qb = $this->createQueryBuilder('r')
+        ->select('SUM(r.nbOfPersons)')
+        ->where('r.dateTime = :dateTime')
+        ->andWhere('r.amOrPm = :amOrPm')
+        ->setParameter('dateTime', $date)
+        
+        ->setParameter('amOrPm', $amOrPm);
+
+    $result = $qb->getQuery()->getSingleScalarResult();
+
+    return $result ? (int) $result : 0;
+}
 
 //    /**
 //     * @return Reservations[] Returns an array of Reservations objects

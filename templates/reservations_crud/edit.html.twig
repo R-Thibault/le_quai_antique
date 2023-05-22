@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Reservations{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-column  flex-grow-1 my-5">
+    <h1 class="text-white my-3 mx-md-5 mx-auto">Modifier une réservation</h1>
+    <div class="bg-dark p-3 mx-3 my-auto align-self-center">
+
+    {{ include('reservations_crud/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+
+</div>
+
+    </div>
+    
+{% endblock %}

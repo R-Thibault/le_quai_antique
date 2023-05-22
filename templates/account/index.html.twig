@@ -29,15 +29,15 @@
        <div class="col-7">
     {% for reservation in reservations %}
       <div class="d-flex gap-5">
-      <p> Date : {{ reservation.date|date('d/m/Y') }}</p>
-      <p> Heure : {{ reservation.hour|date('H:i') }}</p>
+      <p> Date : {{ reservation.dateTime|date('d/m/Y') }}</p>
+      <p> Heure : {{ reservation.dateTime|date('H:i') }}</p>
       <p> Nombre de personne : {{ reservation.nbOfPersons }}</p>
       <p> Allergies : {{ reservation.allergies }}</p> 
 
       <div>
       
-      <a href="{{path('app_reservations_edit', {'id' : reservation.id})}}" class="mx-2"><i class="fa-solid fa-pen-to-square"></i></a>
-      <a href="{{path('app_reservations_delete', {'id' : reservation.id})}}" class="mx-2"><i class="fa-solid fa-trash"></i></a>
+      <a href="{{path('app_reservations_crud_edit', {'id' : reservation.id})}}" class="mx-2"><i class="fa-solid fa-pen-to-square"></i></a>
+      <a href="{{path('app_reservations_crud_delete', {'id' : reservation.id})}}" class="mx-2"><i class="fa-solid fa-trash"></i></a>
       </div>
 
       </div>

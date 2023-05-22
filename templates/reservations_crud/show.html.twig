@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservations{% endblock %}
+
+{% block body %}
+<div class="d-flex flex-column flex-grow-1">
+    <h1 class="text-white my-3 mx-md-5 mx-auto">Reservations</h1>
+    <div class="bg-dark p-3 my-3 mx-auto  ">
+    <a href="{{ path('app_account_index') }}" class="btn btn-primary m-3">retour au compte</a>
+   
+    <table class="table  text-white align-self-center">
+        <tbody>
+            
+            <tr>
+                <th>Prénom</th>
+                <td>{{ reservation.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ reservation.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ reservation.email }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ reservation.date ? reservation.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>heure</th>
+                <td>{{ reservation.hour ? reservation.hour|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Nombre de personnes</th>
+                <td>{{ reservation.nbOfPersons }}</td>
+            </tr>
+            <tr>
+                <th>Allergies</th>
+                <td>{{ reservation.allergies }}</td>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td>{{ reservation.comments }}</td>
+            </tr>
+            
+        </tbody>
+    </table>
+<div>
+ 
+    <a href="{{ path('app_reservations_crud_edit', {'id': reservation.id}) }}" class="btn btn-primary m-3">Modifier</a>
+    {{ include('reservations_crud/_delete_form.html.twig') }}
+</div>
+</div>
+</div>
+
+{% endblock %}
