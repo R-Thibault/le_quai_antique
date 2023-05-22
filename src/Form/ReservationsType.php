@@ -61,7 +61,7 @@ class ReservationsType extends AbstractType
             'label' => 'Horaire',
             'widget' => 'choice',
             'auto_initialize' => false,
-            'required' => false,
+            'data' => \DateTime::createFromFormat('H:i', '12:00'),
             'mapped' => false,
             'minutes' => [
                 0,
@@ -88,13 +88,13 @@ class ReservationsType extends AbstractType
                 'max' => 10,
             ],
         ])
-        ->add('lastName', TextType::class, [
+        ->add('lastname', TextType::class, [
             'label' => 'Nom',
             'attr' => [
                 'placeholder' => 'Nom',
             ],
         ])
-        ->add('firstName', TextType::class, [
+        ->add('firstname', TextType::class, [
             'label' => 'Prénom',
             'attr' => [
                 'placeholder' => 'Prénom',
@@ -106,7 +106,7 @@ class ReservationsType extends AbstractType
                 'placeholder' => 'Email',
             ],
         ])
-        ->add('Allergies', TextType::class, [
+        ->add('allergies', TextType::class, [
             'label' => 'Allergies',
             'required' => false,
             'attr' => [

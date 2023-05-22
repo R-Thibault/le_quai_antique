@@ -17,10 +17,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 
-#[Route('/account')]
+
 class ReservationsCrudController extends AbstractController
 {
-    #[Route('/', name: 'app_account_index', methods: ['GET'])]
+    #[Route('/account', name: 'app_account_index', methods: ['GET'])]
     public function index(ReservationsRepository $reservationsRepository, PlanningRepository $planningRepository): Response
     {
         if (!$this->getUser()) {
@@ -34,7 +34,7 @@ class ReservationsCrudController extends AbstractController
         return $this->render('account/index.html.twig', compact('user', 'days', 'reservations')); 
     }
 
-    #[Route('/edit/{id}', name: 'app_account_edit')]
+    #[Route('/account/edit/{id}', name: 'app_account_edit')]
     public function editUser(Users $user, Request $request, EntityManagerInterface $entityManagerInterface, UsersRepository $usersRepository, PlanningRepository $planningRepository ): Response
     {
         if (!$this->getUser()) {
