@@ -12,8 +12,8 @@ class PlanningFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-             $this->createPlanning('Monday','Lundi', '11:00', '14:00', '19:00', '22:00', false, false, $manager);
-                $this->createPlanning('Tuesday','Mardi', '11:00', '14:00', '19:00', '22:00', false, false, $manager);
+             $this->createPlanning('Monday','Lundi', '11:30', '14:00', '19:00', '22:00', false, false, $manager);
+                $this->createPlanning('Tuesday','Mardi', '11:00', '14:00', '19:00', '22:00', true, false, $manager);
                 $this->createPlanning('Wednesday','Mercredi', '11:00', '14:00', '19:00', '22:00', false, false, $manager);
                 $this->createPlanning('Thursday','Jeudi', '11:00', '14:00', '19:00', '22:00', false, false, $manager);
                 $this->createPlanning('Friday','Vendredi', '11:00', '14:00', '19:00', '22:00', false, false, $manager);

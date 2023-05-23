@@ -73,9 +73,7 @@ class ReservationsType extends AbstractType
                 'hour' => 'Heure',
                 'minute' => 'Minute',
             ],
-            'attr' => [
-                'class' => 'js-timepicker',
-            ],
+            
         ])
         ->add('nbOfPersons', NumberType::class, [
             'data' => '1',

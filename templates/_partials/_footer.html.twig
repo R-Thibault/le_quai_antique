@@ -7,7 +7,16 @@
 <h2 class="title">Horaires d'ouverture</h2>
 <ul class="list-unstyled opening-hours">
 {% for day in days %}
-  <li>{{day.day}} <span class="pull-right">{{day.openAm | date('H-i') }} {{day.closeAm | date('H-i')}}  | {{day.openPm | date('H-i')}} {{day.closePm | date('H-i')}} </span></li>
+  <li>{{day.dayFr}} 
+  {% if day.isClosedAm == true %}
+    <span class="pull-right"> Fermée  | {{day.openPm | date('H-i')}} {{day.closePm | date('H-i')}} </span></li>
+    {% elseif day.isClosedPm == true %}
+    <span class="pull-right">{{day.openAm | date('H-i') }} {{day.closeAm | date('H-i')}}  | Fermée </span></li>
+    {% else %}
+    <span class="pull-right">{{day.openAm | date('H-i') }} {{day.closeAm | date('H-i')}}  | {{day.openPm | date('H-i')}} {{day.closePm | date('H-i')}} </span></li>
+  {% endif %}
+  
+  
 {% endfor %}
 
 </ul>
