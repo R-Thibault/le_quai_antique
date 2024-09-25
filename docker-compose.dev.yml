@@ -3,18 +3,24 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    restart: on-failure
     volumes:
-      - .:/var/www/html
+      - .:/usr/src/app
+    env_file:
+      - .env
+    user: 1000:1000
     networks:
       - app-network
 
   nginx:
+    restart: on-failure
     image: nginx:latest
     ports:
       - "8080:80"
     volumes:
-      - .:/var/www/html
-      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./var/logs/:/var/log/nginx/
+      - ./public/:/usr/src/app/public/
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
     depends_on:
       - php
     networks:
@@ -22,6 +28,7 @@ services:
 
   database:
     image: postgres:${POSTGRES_VERSION:-15}-alpine
+    container_name: database
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-app}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
@@ -29,11 +36,19 @@ services:
     volumes:
       - database_data:/var/lib/postgresql/data:rw
     ports:
-      - "5432"
+      - "5432:5432"
+    networks:
+      - app-network
 
   mailer:
     image: schickling/mailcatcher
     ports: ["1025", "1080"]
+    networks:
+      - app-network
 
 volumes:
   database_data:
+
+networks:
+  app-network:
+    external: false
