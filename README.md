@@ -1,9 +1,6 @@
-
 # ECF - restaurant - Le Quai Antique
 
 Création d'un site pour le restaurant "Le Quai Antique" dans le carde d'une évaluation.
-
-
 
 ## Prérequis
 
@@ -18,11 +15,13 @@ Création d'un site pour le restaurant "Le Quai Antique" dans le carde d'une év
 ## Déploiement en local
 
 Cloner le projet
+
 ```bash
   git clone https://github.com/R-Thibault/le_quai_antique.git
 ```
 
 Aller dans le dossier du projet
+
 ```bash
   cd my-project
 ```
@@ -30,14 +29,16 @@ Aller dans le dossier du projet
 Installer les dépendances :
 
 - PHP avec Composer :
+
 ```bash
   composer install
 ```
 
 - JavaScript avec NPM ou YARN :
+
 ```bash
   npm install
-  
+
   yarn install
 ```
 
@@ -49,10 +50,13 @@ Copier le fichier .env en .env.local et modifiez les variables d'environnement:
 Initialisation de la base de donnée:
 
 - création de la base de donnée :
+
 ```bash
   php bin/console doctrine:database:create
 ```
+
 - éxécution les migrations d'entité :
+
 ```bash
   php bin/console doctrine:migrations:migrate
 ```
@@ -60,6 +64,7 @@ Initialisation de la base de donnée:
 Utilisation :
 
 - compilation des fichier Javascript et CSS :
+
 ```bash
   npm run watch
 
@@ -67,8 +72,17 @@ Utilisation :
 ```
 
 - démarrage du serveur web:
+
 ```bash
   php bin/console server:run
 ```
 
 - Ouvrez un navigateur et accédez à l'URL http://localhost:8000 pour accéder au site web
+
+## Autre informations
+
+- build image docker
+
+```bash
+docker build -f ./docker/php/Dockerfile -t <votre-image:tag> .
+```
