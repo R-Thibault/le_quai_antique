@@ -1,0 +1,52 @@
+# Exclude the Dockerfile itself and docker-compose files
+Dockerfile
+docker-compose.yml
+docker-compose.override.yml
+
+# Exclude hidden files and folders (e.g., Git, editor configs, etc.)
+.git
+.gitignore
+.gitattributes
+.idea
+.vscode
+.env.*
+.env.local
+.env.*.local
+.php_cs.cache
+
+# Exclude local configuration and cache files
+var/cache/
+var/log/
+var/sessions/
+var/test/
+var/data.db
+var/backups/
+
+# Exclude the vendor directory to avoid conflicts with the `composer install` inside the Dockerfile
+/vendor/
+
+# Exclude node_modules and frontend build artifacts (if using Webpack Encore)
+node_modules/
+npm-debug.log
+yarn-error.log
+/build/
+public/build/
+public/bundles/
+
+# Exclude PHPUnit and testing related files
+phpunit.xml
+phpunit.xml.dist
+tests/
+
+# Exclude IDE config files and settings
+*.iml
+*.idea
+*.sublime*
+*.swp
+*.DS_Store
+*.log
+*.bak
+
+# Exclude Docker-related files and scripts
+docker/
+docker-compose.override.yml
